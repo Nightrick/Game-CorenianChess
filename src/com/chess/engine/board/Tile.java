@@ -45,6 +45,11 @@ public abstract class Tile {
 			super(coordinate); //Here, the keyword super indicates the coordinate being referenced is the super-class or parent variable. 
 		}
 		
+		@Override
+		public String toString() {
+			return "-";
+		}
+		
 		//Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes.
 		//When a method in a subclass has the same name, same parameters or signature, and same return type (or sub-type) as a method in its super-class, the method in the subclass is said to override the method in the super class
 		@Override
@@ -66,6 +71,13 @@ public abstract class Tile {
 		private OccupiedTile(int tileCoordinate, Piece pieceOnTile){
 			super(tileCoordinate);
 			this.pieceOnTile = pieceOnTile;
+		}
+		
+		//Black pieces will show up as lower case, white pieces as upper case. This is simply a convention. 
+		@Override
+		public String toString() {
+			return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
+				   getPiece().toString();
 		}
 		
 		@Override
